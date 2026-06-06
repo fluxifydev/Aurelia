@@ -28,8 +28,8 @@ export default function SignupPage() {
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success("Account created successfully!");
       router.push("/");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to create account.");
+    } catch (error: unknown) {
+      toast.error((error as Error).message || "Failed to create account.");
     } finally {
       setLoading(false);
     }

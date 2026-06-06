@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/data";
-import { Gem, ShieldCheck, Clock, MapPin, Mail, Phone, ArrowRight } from "lucide-react";
+import { Gem, ShieldCheck, Clock, ArrowRight } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
 export default function Home() {
@@ -111,7 +111,7 @@ export default function Home() {
               Founded in the heart of the diamond district, Aurelia Jewels was born out of a profound passion for extraordinary craftsmanship. For over three decades, our master artisans have sourced only the most ethically procured, flawless gemstones from around the world. 
             </motion.p>
             <motion.p variants={fadeInUp} className="text-zinc-600 text-lg md:text-xl leading-relaxed font-light max-w-2xl">
-              We don't just create jewelry; we forge heirlooms that carry your unique story through generations. Our dedication to perfection is woven into every facet, every setting, and every design that leaves our atelier.
+              We don&apos;t just create jewelry; we forge heirlooms that carry your unique story through generations. Our dedication to perfection is woven into every facet, every setting, and every design that leaves our atelier.
             </motion.p>
           </motion.div>
         </div>

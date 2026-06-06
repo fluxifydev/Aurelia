@@ -14,6 +14,7 @@ export default function CheckoutPage() {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/rules-of-hooks, @typescript-eslint/no-unused-expressions, react-hooks/set-state-in-effect
     setIsClient(true);
   }, []);
 

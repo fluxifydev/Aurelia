@@ -23,8 +23,8 @@ export default function LoginPage() {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Successfully logged in!");
       router.push("/");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to log in.");
+    } catch (error: unknown) {
+      toast.error((error as Error).message || "Failed to log in.");
     } finally {
       setLoading(false);
     }
@@ -85,7 +85,7 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-8 text-center text-sm text-zinc-500">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-emerald-600 font-medium hover:text-emerald-700">
               Create an account
             </Link>

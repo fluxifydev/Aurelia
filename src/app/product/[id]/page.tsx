@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, use } from "react";
 import { notFound } from "next/navigation";
-import { ChevronRight, ArrowLeft } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
