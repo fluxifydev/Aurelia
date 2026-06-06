@@ -63,8 +63,14 @@ export default function Navbar() {
             </button>
             {user ? (
               <div className="relative group hidden md:block">
-                <button className="hover:text-emerald-600 transition-colors flex items-center">
-                  <User className="w-4 h-4" />
+                <button className="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 overflow-hidden border border-zinc-200 hover:ring-2 hover:ring-emerald-500 transition-all">
+                  {user.photoURL ? (
+                    <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-xs font-bold text-zinc-600">
+                      {user.email?.charAt(0).toUpperCase() || <User className="w-4 h-4" />}
+                    </span>
+                  )}
                 </button>
                 <div className="absolute right-0 top-full mt-2 w-48 bg-card-bg border border-zinc-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
                   <div className="px-4 py-2 border-b border-zinc-100 text-xs text-zinc-500 truncate">
@@ -121,7 +127,18 @@ export default function Navbar() {
             <div className="pt-6 border-t border-zinc-100 flex flex-col space-y-6">
               {user ? (
                 <>
-                  <div className="text-xs text-zinc-500 normal-case tracking-normal font-normal">{user.email}</div>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-zinc-100 overflow-hidden border border-zinc-200 flex items-center justify-center shrink-0">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+                      ) : (
+                        <span className="text-sm font-bold text-zinc-600">
+                          {user.email?.charAt(0).toUpperCase()}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-xs text-zinc-500 normal-case tracking-normal font-normal truncate">{user.email}</div>
+                  </div>
                   <button 
                     onClick={() => { logout(); setIsMobileMenuOpen(false); }}
                     className="text-left text-red-600"
