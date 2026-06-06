@@ -45,7 +45,8 @@ export default function CheckoutPage() {
       message += `  Size: ${item.selectedSize || 'N/A'}, Price: $${(item.price * item.quantity).toLocaleString()}\n`;
     });
 
-    message += `\n*Total Estimate:* $${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    message += `\n*Total Estimate:* $${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}\n\n`;
+    message += `Visit us again at: https://aurelia-alpha.vercel.app/`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/919207842646?text=${encodedMessage}`;

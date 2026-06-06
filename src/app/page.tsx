@@ -29,12 +29,12 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background text-foreground overflow-hidden">
       
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <motion.div 
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 bg-[#0a0a0a]"
+          className="absolute inset-0 w-full h-full origin-center"
         >
           <Image
             src="/images/hero_jewelry.png"
