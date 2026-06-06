@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -62,8 +63,9 @@ export default function CheckoutPage() {
 
   if (orderPlaced) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
-        <CheckCircle className="w-20 h-20 text-emerald-500 mb-6" />
+      <ProtectedRoute>
+        <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh] px-6 text-center">
+          <CheckCircle className="w-20 h-20 text-emerald-500 mb-6" />
         <h1 className="font-serif text-4xl mb-4">Redirecting to WhatsApp...</h1>
         <p className="text-zinc-500 mb-8 max-w-md">
           You are being redirected to WhatsApp to confirm your order details. If nothing happens, <a href="#" onClick={() => window.location.reload()} className="underline text-emerald-600">click here</a> to restart.
@@ -74,13 +76,15 @@ export default function CheckoutPage() {
         >
           Continue Shopping
         </Link>
-      </div>
+        </div>
+      </ProtectedRoute>
     );
   }
 
   return (
-    <div className="flex-1 max-w-7xl mx-auto px-6 py-24 w-full">
-      <h1 className="font-serif text-3xl md:text-4xl mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-6">
+    <ProtectedRoute>
+      <div className="flex-1 max-w-7xl mx-auto px-6 py-24 w-full">
+        <h1 className="font-serif text-3xl md:text-4xl mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-6">
         Checkout
       </h1>
 
@@ -184,6 +188,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </ProtectedRoute>
   );
 }
