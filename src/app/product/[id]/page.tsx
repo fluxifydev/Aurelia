@@ -5,12 +5,13 @@ import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, use } from "react";
-import { notFound } from "next/navigation";
-import { ChevronRight } from "lucide-react";
+import { notFound, useRouter } from "next/navigation";
+import { ChevronRight, ArrowLeft } from "lucide-react";
 
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const product = products.find(p => p.id === resolvedParams.id);
+  const router = useRouter();
   
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -40,13 +41,23 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
   return (
     <div className="flex-1 max-w-7xl mx-auto px-6 py-24 w-full">
-      {/* Breadcrumb */}
-      <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-zinc-500 mb-12">
-        <Link href="/shop" className="hover:text-black dark:hover:text-white transition-colors">Shop</Link>
-        <ChevronRight className="w-3 h-3" />
-        <Link href={`/shop?category=${product.category}`} className="hover:text-black dark:hover:text-white transition-colors">{product.category}</Link>
-        <ChevronRight className="w-3 h-3" />
-        <span className="text-black dark:text-white">{product.name}</span>
+      {/* Breadcrumb & Back Button */}
+      <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-zinc-500">
+          <Link href="/shop" className="hover:text-black dark:hover:text-white transition-colors">Shop</Link>
+          <ChevronRight className="w-3 h-3" />
+          <Link href={`/shop?category=${product.category}`} className="hover:text-black dark:hover:text-white transition-colors">{product.category}</Link>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-black dark:text-white">{product.name}</span>
+        </div>
+        
+        <button 
+          onClick={() => router.back()}
+          className="flex items-center space-x-2 text-xs uppercase tracking-widest font-medium hover:text-emerald-600 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back</span>
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
